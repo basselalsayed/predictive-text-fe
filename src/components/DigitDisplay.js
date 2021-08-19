@@ -1,7 +1,6 @@
-import React from 'react';
 import useDigits from '../hooks/useDigits';
 
-export const DigitDisplay = () => {
+const DigitDisplay = () => {
   const { digits } = useDigits();
 
   return (
@@ -18,3 +17,5 @@ export const DigitDisplay = () => {
     </div>
   );
 };
+
+export default DigitDisplay;

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import './App.scss';
-import { DigitDisplay } from './components/DigitDisplay';
+import DigitDisplay from './components/DigitDisplay';
 import Keypad from './components/Keypad';
 
 const App = () => (

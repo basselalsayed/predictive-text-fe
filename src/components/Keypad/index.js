@@ -1,6 +1,5 @@
 import styles from './keypad.module.scss';
 
-import React from 'react';
 import InputCircle from '../InputCircle/InputCircle';
 
 import useDigits from '../../hooks/useDigits';
