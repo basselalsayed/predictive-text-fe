@@ -1,7 +1,14 @@
-import './App.css';
+import { memo } from 'react';
 
-function App() {
-  return 'hello react';
-}
+import './App.scss';
+import { DigitDisplay } from './components/DigitDisplay';
+import Keypad from './components/Keypad';
 
-export default App;
+const App = () => (
+  <div className='container'>
+    <DigitDisplay />
+    <Keypad />
+  </div>
+);
+
+export default memo(App);
