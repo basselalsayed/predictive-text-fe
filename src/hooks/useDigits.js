@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { addDigit as _addDigit } from '../redux/modules/digits';
 import { removeDigit as _removeDigit } from '../redux/modules/digits';
 
 const useDigits = () => {
   const dispatch = useDispatch();
 
-  const digits = useSelector(({ digits: { digits } }) => digits);
+  const digits = useSelector(({ digits: { digits } }) => digits, shallowEqual);
 
   const addDigit = useCallback(digit => dispatch(_addDigit(digit)), [dispatch]);
 

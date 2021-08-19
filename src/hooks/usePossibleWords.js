@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { postDigits as _postDigits } from '../redux/modules/possibleWords';
 
 const usePossibleWords = () => {
   const dispatch = useDispatch();
 
   const { possibleWords, postingPossibleWords, possibleWordsError } =
-    useSelector(({ possibleWords }) => possibleWords);
+    useSelector(({ possibleWords }) => possibleWords, shallowEqual);
 
   const postDigits = useCallback(
     digits => dispatch(_postDigits(digits)),
