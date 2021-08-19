@@ -1,6 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import possibleWords from './modules/possibleWords';
+
+import createRootReducer from './modules/rootReducer';
 
 const configureStore = () => {
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -13,7 +14,7 @@ const configureStore = () => {
   const middleware = [thunk];
 
   const store = createStore(
-    possibleWords,
+    createRootReducer(),
     composeEnhancer(applyMiddleware(...middleware)),
   );
 
