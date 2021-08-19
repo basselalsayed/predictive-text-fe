@@ -3,6 +3,8 @@ import styles from './keypad.module.scss';
 import React from 'react';
 import InputCircle from '../InputCircle/InputCircle';
 
+import useDigits from '../../hooks/useDigits';
+
 const inputs = [
   [],
   ['a', 'b', 'c'],
@@ -15,21 +17,25 @@ const inputs = [
   ['w', 'x', 'y', 'z'],
 ];
 
-const Keypad = () => (
-  <div className={styles.container}>
-    {inputs.map((input, index) => (
-      <InputCircle
-        style={{ justifySelf: 'center' }}
-        key={index}
-        onClick={() => {}}
-      >
-        <>
-          <span>{index + 1}</span>
-          <span>{input.join('').toUpperCase()}</span>
-        </>
-      </InputCircle>
-    ))}
-  </div>
-);
+const Keypad = () => {
+  const { addDigit } = useDigits();
+
+  return (
+    <div className={styles.container}>
+      {inputs.map((input, index) => (
+        <InputCircle
+          style={{ justifySelf: 'center' }}
+          key={index}
+          onClick={() => index !== 0 && addDigit(index + 1)}
+        >
+          <>
+            <span>{index + 1}</span>
+            <span>{input.join('').toUpperCase()}</span>
+          </>
+        </InputCircle>
+      ))}
+    </div>
+  );
+};
 
 export default Keypad;
