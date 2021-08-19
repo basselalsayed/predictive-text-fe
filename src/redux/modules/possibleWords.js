@@ -34,7 +34,7 @@ export default produce((state, { type, payload }) => {
 export const postDigits = digits => async dispatch => {
   try {
     dispatch(createAction(SET_POSSIBLE_WORDS_POSTING));
-    const { data } = await axios.post(API_URL, { digits });
+    const { data } = await axios.post(process.env.API_URL, { digits });
 
     return dispatch(createAction(SET_POSSIBLE_WORDS_SUCCESS, data));
   } catch (error) {
