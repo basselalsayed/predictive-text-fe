@@ -4,8 +4,9 @@ import { postDigits as _postDigits } from '../redux/modules/possibleWords';
 
 const usePossibleWords = () => {
   const dispatch = useDispatch();
+
   const { possibleWords, postingPossibleWords, possibleWordsError } =
-    useSelector(state => state);
+    useSelector(({ possibleWords }) => possibleWords);
 
   const postDigits = useCallback(
     digits => dispatch(_postDigits(digits)),
