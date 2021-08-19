@@ -1,4 +1,6 @@
+import axios from 'axios';
 import produce from 'immer';
+import { createAction } from '..';
 
 const SET_POSSIBLE_WORDS_POSTING = 'SET_POSSIBLE_WORDS_POSTING';
 const SET_POSSIBLE_WORDS_SUCCESS = 'SET_POSSIBLE_WORDS_SUCCESS';
@@ -27,3 +29,15 @@ export default produce((state, { type, payload }) => {
     // no default
   }
 }, initialState);
+
+// actions
+export const postDigits = digits => async dispatch => {
+  try {
+    dispatch(createAction(SET_POSSIBLE_WORDS_POSTING));
+    const { data } = await axios.post(API_URL, { digits });
+
+    return dispatch(createAction(SET_POSSIBLE_WORDS_SUCCESS, data));
+  } catch (error) {
+    return dispatch(createAction(SET_POSSIBLE_WORDS_POSTING), error);
+  }
+};
