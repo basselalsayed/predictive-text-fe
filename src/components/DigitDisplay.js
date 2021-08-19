@@ -11,6 +11,7 @@ const DigitDisplay = () => {
         textAlign: 'center',
         padding: '1em',
         borderRadius: '2px',
+        minWidth: '280px',
       }}
     >
       <p>{digits.join('')}</p>
