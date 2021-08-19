@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  div:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 20% auto;
+    width: 40%;
+  }
+}
