@@ -1,5 +1,6 @@
 import axios from 'axios';
 import produce from 'immer';
+import parseError from '../../helpers/parseError';
 import { createAction } from '..';
 
 const SET_POSSIBLE_WORDS_POSTING = 'SET_POSSIBLE_WORDS_POSTING';
@@ -34,10 +35,15 @@ export default produce((state, { type, payload }) => {
 export const postDigits = digits => async dispatch => {
   try {
     dispatch(createAction(SET_POSSIBLE_WORDS_POSTING));
-    const { data } = await axios.post(process.env.API_URL, { digits });
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URL}/digits`,
+      {
+        digits,
+      },
+    );
 
     return dispatch(createAction(SET_POSSIBLE_WORDS_SUCCESS, data));
   } catch (error) {
-    return dispatch(createAction(SET_POSSIBLE_WORDS_POSTING), error);
+    return dispatch(createAction(SET_POSSIBLE_WORDS_FAIL, parseError(error)));
   }
 };
