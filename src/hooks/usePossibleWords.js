@@ -13,6 +13,9 @@ const usePossibleWords = () => {
   );
 
   return {
+    possibleWords,
+    postingPossibleWords,
+    possibleWordsError,
     postDigits,
   };
 };
